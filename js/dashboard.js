@@ -449,10 +449,14 @@ function updateAnalyticsPanel() {
   );
 
   // Update stat cards
-  document.getElementById('stat-total')?.textContent = stats.totalDetected;
-  document.getElementById('stat-high-risk')?.textContent = stats.highRisk;
-  document.getElementById('stat-pending')?.textContent = stats.pending;
-  document.getElementById('stat-verified')?.textContent = stats.verified;
+  const elTotal = document.getElementById('stat-total');
+  const elHighRisk = document.getElementById('stat-high-risk');
+  const elPending = document.getElementById('stat-pending');
+  const elVerified = document.getElementById('stat-verified');
+  if (elTotal) elTotal.textContent = stats.totalDetected;
+  if (elHighRisk) elHighRisk.textContent = stats.highRisk;
+  if (elPending) elPending.textContent = stats.pending;
+  if (elVerified) elVerified.textContent = stats.verified;
 
   // Update charts
   updateSiteTypeChart(stats.siteTypes);

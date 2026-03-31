@@ -60,7 +60,7 @@
             Uncontrolled lead-acid battery recycling operations recover valuable lead but lack basic environmental controls. Workers and nearby residents experience severe lead exposure.
           </p>
           <p style="font-size: var(--font-size-sm); color: var(--gray-400);">
-            Estimated 1,000+ informal sites across South Asia
+            Widespread across South Asia, exact numbers unknown
           </p>
         </div>
 
@@ -70,7 +70,7 @@
             Both registered and unregistered smelter facilities process lead ore and scrap. Emissions contaminate soil, water, and air across wide areas.
           </p>
           <p style="font-size: var(--font-size-sm); color: var(--gray-400);">
-            Estimated 200-300 active facilities in target regions
+            Numerous facilities across target regions, many unregistered
           </p>
         </div>
 
@@ -139,8 +139,7 @@
       </p>
 
       <p style="margin-top: var(--spacing-8); padding: var(--spacing-6); background-color: rgba(19, 83, 173, 0.1); border-left: 4px solid #3b82f6; border-radius: var(--radius-md);">
-        <strong>Lab website:</strong> <a href="https://betterplanetlab.org/" target="_blank" rel="noopener">betterplanetlab.org</a><br>
-        <strong>University:</strong> University of Colorado Boulder, Department of Computer Science
+        <strong>University:</strong> University of Colorado Boulder
       </p>
     </section>
 
@@ -198,15 +197,14 @@
     <section class="section section-light">
       <h2>Impact & Next Steps</h2>
 
-      <h3>What We've Achieved</h3>
+      <h3>What We've Built So Far</h3>
       <div class="card">
         <ul style="color: var(--gray-300);">
-          <li>Deployed screening models covering 500,000+ km² in South Asia</li>
-          <li>Identified 2,500+ confirmed toxic sites through field verification</li>
-          <li>Trained 100+ field staff in site assessment and remediation planning</li>
-          <li>Engaged with 50,000+ people in affected communities</li>
-          <li>Supported closure of 50+ informal lead recycling operations</li>
-          <li>Documented environmental and health improvements in remediated areas</li>
+          <li>Developed two complementary ML pipelines: contextual (XGBoost) for ULAB and satellite imagery (deep learning) for smelters</li>
+          <li>Completed proof-of-concept in NCR Delhi with 188 high-risk cells identified and 13 verified ULAB sites matched</li>
+          <li>Trained models on limited ground-truth data using active learning, demonstrating generalization from small datasets</li>
+          <li>Built interactive screening dashboard for Pure Earth field teams</li>
+          <li>Established data pipeline using OpenStreetMap, Sentinel-2, WorldPop, and Pure Earth's TSIP database</li>
         </ul>
       </div>
 
@@ -224,7 +222,7 @@
       </ul>
 
       <p style="margin-top: var(--spacing-8); padding: var(--spacing-6); background-color: rgba(34, 197, 94, 0.1); border-left: 4px solid #22c55e; border-radius: var(--radius-md);">
-        <strong>Vision:</strong> To make lead-free environments the norm in South Asia by 2030, protecting millions of children from preventable exposure.
+        <strong>Goal:</strong> Help Pure Earth and partner organizations systematically identify toxic sites at scale, so field teams can focus their limited resources on the highest-risk locations.
       </p>
     </section>
 
@@ -238,8 +236,8 @@
           <p style="color: var(--gray-300);">
             Interested in collaborating on model improvement, validation studies, or extending this approach to other regions or pollutants? Contact the Better Planet Lab.
           </p>
-          <a href="mailto:research@betterplanetlab.org" class="btn btn-small btn-outline" style="margin-top: var(--spacing-4); width: 100%; justify-content: center;">
-            Contact Lab
+          <a href="mailto:naiatxu18@gmail.com" class="btn btn-small btn-outline" style="margin-top: var(--spacing-4); width: 100%; justify-content: center;">
+            Contact Us
           </a>
         </div>
 
@@ -248,8 +246,8 @@
           <p style="color: var(--gray-300);">
             Need help identifying toxic sites in your region? Pure Earth works with partners to apply and adapt this methodology to local contexts.
           </p>
-          <a href="mailto:tsip@pureearth.org" class="btn btn-small btn-outline" style="margin-top: var(--spacing-4); width: 100%; justify-content: center;">
-            Partnership Inquiry
+          <a href="https://www.pureearth.org/contact/" class="btn btn-small btn-outline" style="margin-top: var(--spacing-4); width: 100%; justify-content: center;">
+            Contact Pure Earth
           </a>
         </div>
 
@@ -272,11 +270,10 @@
         If you use this tool, data, or models in your research or work, please cite:
       </p>
       <div class="code-block" style="background-color: var(--navy-800); text-align: left;">
-        Pure Earth & Better Planet Lab (2024). Toxic Sites Identification Program:<br>
-        Machine Learning Models for Lead Contamination Detection in South Asia.<br>
-        Available at: https://tsip.pureearth.org<br>
-        <br>
-        Accessed: [Date]
+        Ormaza Zulueta, N. et al. (2026). Machine Learning for Toxic Site<br>
+        Identification: A Screening Tool for Lead Contamination Detection.<br>
+        Better Planet Lab, University of Colorado Boulder.<br>
+        In collaboration with Pure Earth.
       </div>
 
       <p style="margin-top: var(--spacing-6); color: var(--gray-400); font-size: var(--font-size-sm);">
@@ -323,7 +320,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Pure Earth. Toxic Sites Identification Program. All rights reserved.</p>
+        <p>&copy; 2026 Pure Earth. Toxic Sites Identification Program. All rights reserved.</p>
         <p>Built with support from Better Planet Lab, University of Colorado Boulder.</p>
       </div>
     </div>

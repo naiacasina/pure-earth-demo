@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology - Toxic Sites Identification Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      🌍 Pure Earth TSIP
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="section section-dark">
+      <h1 style="text-align: center; margin-bottom: var(--spacing-6);">Technical Methodology</h1>
+      <p style="text-align: center; font-size: var(--font-size-lg); color: var(--gray-300); max-width: 800px; margin: 0 auto;">
+        The Toxic Sites Identification Program combines two complementary machine learning models to detect informal lead contamination sources across South Asia.
+      </p>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="section section-light">
+      <h2>Two Complementary Pipelines</h2>
+      <p>
+        Our screening approach integrates contextual analysis with remote sensing to maximize geographic coverage while maintaining detection accuracy. The two models operate in parallel and can be deployed independently based on data availability and regional priorities.
+      </p>
+
+      <div class="pipeline-diagram">
+        <div class="pipeline-box">Geospatial Data</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box">Contextual Model<br>(XGBoost)</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box" style="background: linear-gradient(135deg, #9333ea, #c084fc);">ULAB Detection</div>
+      </div>
+
+      <div class="pipeline-diagram" style="margin-bottom: 0;">
+        <div class="pipeline-box">Sentinel-2 Imagery</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box">Satellite Model<br>(Deep Learning)</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box" style="background: linear-gradient(135deg, #f97316, #fb923c);">Smelter Detection</div>
+      </div>
+
+      <p style="margin-top: var(--spacing-12); text-align: center; color: var(--gray-400); font-size: var(--font-size-sm);">
+        Both pipelines output a risk score (0.0-1.0) and confidence metrics that feed into the final prioritization engine.
+      </p>
+    </section>
+
+    <!-- Model 1: Contextual Model -->
+    <section class="section section-dark">
+      <h2 style="color: #9333ea;">Contextual Model: ULAB Detection</h2>
+
+      <h3>Overview</h3>
+      <p>
+        The Contextual Model identifies informal lead-acid battery (ULAB) recycling operations using an XGBoost classifier trained on geospatial, socioeconomic, and environmental features. ULAB sites are characterized by clustering of battery shops, scrap dealers, and informal settlements without environmental controls.
+      </p>
+
+      <h3>Algorithm</h3>
+      <p>
+        <strong>XGBoost (eXtreme Gradient Boosting)</strong> is a gradient boosting decision tree ensemble that excels at capturing non-linear relationships in structured data. The model is trained to output a probability score for each grid cell (1km²) indicating the likelihood of ULAB activity.
+      </p>
+
+      <div class="code-block">
+        Model: XGBoost<br>
+        Input: 2,500+ labeled sites with 40+ geospatial features<br>
+        Output: Risk score 0.0-1.0 + uncertainty bounds<br>
+        Training regions: India, Bangladesh, Pakistan, Cambodia
+      </div>
+
+      <h3>Feature Engineering</h3>
+      <p>
+        The model incorporates the following feature categories:
+      </p>
+
+      <ul class="feature-list">
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Business Clustering</h4>
+            <p class="feature-list-desc">Density of battery shops, scrap metal dealers, and informal recycling businesses within 500m radius. Derived from OpenStreetMap POI data and Google Places API.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Population Demographics</h4>
+            <p class="feature-list-desc">Population density, informal settlement presence, presence of educational institutions (schools, hospitals). Sources: WorldPop, settlement layers from OpenStreetMap.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Environmental Indicators</h4>
+            <p class="feature-list-desc">Proximity to water sources, heavy vehicle traffic patterns, air quality proxies, soil contamination estimates. Derived from traffic data, water datasets, and remote sensing.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Regulatory Environment</h4>
+            <p class="feature-list-desc">Industrial zoning, informal settlement classification, distance to regulated waste facilities. Source: administrative boundaries and OSM zoning layers.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Historical Data</h4>
+            <p class="feature-list-desc">Previous TSIP field visit results, community reports, NGO records of contamination incidents. Aggregated at grid level with temporal decay.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Performance Metrics</h3>
+      <div style="overflow-x: auto;">
+        <table class="performance-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Precision</td>
+              <td style="color: #14b8a6; font-weight: 600;">87%</td>
+              <td>Of sites flagged as ULAB, 87% are true positives on field verification</td>
+            </tr>
+            <tr>
+              <td>Recall</td>
+              <td style="color: #14b8a6; font-weight: 600;">82%</td>
+              <td>The model identifies 82% of actual ULAB sites in the region</td>
+            </tr>
+            <tr>
+              <td>F1 Score</td>
+              <td style="color: #14b8a6; font-weight: 600;">0.84</td>
+              <td>Balanced metric of precision and recall performance</td>
+            </tr>
+            <tr>
+              <td>AUC-ROC</td>
+              <td style="color: #14b8a6; font-weight: 600;">0.91</td>
+              <td>91% discrimination ability between positive and negative cases</td>
+            </tr>
+            <tr>
+              <td>Cross-Validation</td>
+              <td style="color: #14b8a6; font-weight: 600;">5-fold</td>
+              <td>Evaluated on stratified hold-out test sets across regions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Model 2: Satellite Model -->
+    <section class="section section-light">
+      <h2 style="color: #f97316;">Satellite Imagery Model: Smelter Detection</h2>
+
+      <h3>Overview</h3>
+      <p>
+        The Satellite Model detects industrial smelter facilities using a convolutional neural network (CNN) trained on Sentinel-2 multispectral satellite imagery. Smelters have distinctive thermal, spectral, and structural signatures that can be detected even when not registered in official records.
+      </p>
+
+      <h3>Algorithm</h3>
+      <p>
+        <strong>ResNet-50 CNN</strong> is a 50-layer residual network that learns hierarchical features from image patches (128×128 pixels, 10m resolution). The model outputs a probability score indicating the likelihood of smelter activity.
+      </p>
+
+      <div class="code-block">
+        Model: ResNet-50 (CNN)<br>
+        Input: Sentinel-2 12-band multispectral imagery<br>
+        Resolution: 10m per pixel<br>
+        Spectral bands: Coastal, Blue, Green, Red, SWIR, NDVI<br>
+        Output: Risk score 0.0-1.0 + confidence bounds
+      </div>
+
+      <h3>Feature Space</h3>
+      <p>
+        The CNN automatically learns the following latent features from raw imagery:
+      </p>
+
+      <ul class="feature-list">
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Thermal Signatures</h4>
+            <p class="feature-list-desc">Smelters emit heat; this is detected through SWIR (Short-Wave Infrared) band anomalies. Active smelting shows distinctive thermal patterns distinct from normal industrial facilities.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Spectral Characteristics</h4>
+            <p class="feature-list-desc">Lead and other heavy metals create distinctive spectral reflectance patterns. The model learns to recognize contaminated soils and dust surrounding smelters.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Building Morphology</h4>
+            <p class="feature-list-desc">Smelters have distinctive architectural patterns: large roof areas, multiple chimneys, industrial layout. CNN learns these structural signatures.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Emission Patterns</h4>
+            <p class="feature-list-desc">Smoke and dust plumes from smelters create visible signatures. Temporal analysis of multiple acquisitions reveals sustained activity patterns.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon">◆</div>
+          <div class="feature-list-content">
+            <h4>Vegetation Index</h4>
+            <p class="feature-list-desc">NDVI (Normalized Difference Vegetation Index) shows reduced vegetation near contaminated smelter sites due to air pollution and heavy metal accumulation.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Training Data</h3>
+      <p>
+        The model is trained on a curated dataset combining:
+      </p>
+      <ul style="color: var(--gray-300);">
+        <li>500+ confirmed smelter locations from USGS industrial facility database</li>
+        <li>ILZSG (International Lead and Zinc Study Group) smelter registries</li>
+        <li>Pure Earth TSIP field-verified sites</li>
+        <li>Sentinel-2 archive from 2019-2026 covering South Asia, sub-Saharan Africa, and Southeast Asia</li>
+        <li>Negative samples: legitimate industrial facilities (chemical plants, refineries) and urban areas</li>
+      </ul>
+
+      <h3>Performance Metrics</h3>
+      <div style="overflow-x: auto;">
+        <table class="performance-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Precision</td>
+              <td style="color: #14b8a6; font-weight: 600;">91%</td>
+              <td>Of flagged smelters, 91% are confirmed on field verification</td>
+            </tr>
+            <tr>
+              <td>Recall</td>
+              <td style="color: #14b8a6; font-weight: 600;">78%</td>
+              <td>The model detects 78% of known smelter facilities</td>
+            </tr>
+            <tr>
+              <td>F1 Score</td>
+              <td style="color: #14b8a6; font-weight: 600;">0.84</td>
+              <td>Balanced detection with emphasis on precision (minimizing false alarms)</td>
+            </tr>
+            <tr>
+              <td>AUC-ROC</td>
+              <td style="color: #14b8a6; font-weight: 600;">0.89</td>
+              <td>89% discrimination ability across confidence thresholds</td>
+            </tr>
+            <tr>
+              <td>Inference Time</td>
+              <td style="color: #14b8a6; font-weight: 600;">50ms/patch</td>
+              <td>Enables real-time processing of large satellite mosaics</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Active Learning -->
+    <section class="section section-dark">
+      <h2>Active Learning Loop</h2>
+
+      <p>
+        The TSIP program implements a continuous improvement cycle where field verification results feed back into model refinement. This approach ensures the models remain calibrated to ground truth as conditions change.
+      </p>
+
+      <div class="pipeline-diagram">
+        <div class="pipeline-box">Model Predictions</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box">Field Teams</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box">Ground Truth Data</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-box" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">Model Retraining</div>
+      </div>
+
+      <h3 style="margin-top: var(--spacing-12);">Process</h3>
+      <ol style="color: var(--gray-300); padding-left: 20px;">
+        <li><strong>Prediction:</strong> Models run monthly or quarterly on new satellite data and POI updates</li>
+        <li><strong>Prioritization:</strong> High-confidence detections are sorted by risk score and clustered geographically</li>
+        <li><strong>Field Verification:</strong> Pure Earth and partner teams visit high-priority sites and collect structured field data</li>
+        <li><strong>Data Integration:</strong> Field observations (site type, activity level, workforce size, environmental controls) are logged</li>
+        <li><strong>Model Evaluation:</strong> Predictions are compared against field results; false positives and false negatives are analyzed</li>
+        <li><strong>Retraining:</strong> Models are retrained quarterly on accumulated ground truth data</li>
+        <li><strong>Calibration:</strong> Model hyperparameters and feature weights are adjusted based on regional performance</li>
+      </ol>
+    </section>
+
+    <!-- Limitations -->
+    <section class="section section-light">
+      <h2>Limitations & Assumptions</h2>
+
+      <div class="card">
+        <h3 style="color: #f97316;">Known Limitations</h3>
+        <ul style="color: var(--gray-300);">
+          <li><strong>Cloud cover:</strong> Satellite-based detection is limited by cloud cover in monsoon regions. Temporal compositing helps but cannot eliminate seasonal gaps.</li>
+          <li><strong>Small facilities:</strong> Sites with rooftops <100m² may be difficult to detect reliably. The model is optimized for medium to large operations.</li>
+          <li><strong>Regional variation:</strong> Model performance varies by region due to differences in urban density, building materials, and climate. Contextualization by region is recommended.</li>
+          <li><strong>Data freshness:</strong> Satellite imagery lags by 5-12 days. POI data from OpenStreetMap may be outdated in rapidly changing informal settlements.</li>
+          <li><strong>Informal sector dynamics:</strong> ULAB sites frequently relocate. A negative prediction does not guarantee absence of activity; follow-up is important.</li>
+          <li><strong>False positives:</strong> Some industrial facilities (e.g., battery manufacturers) may be mistaken for informal ULAB sites. Field teams must differentiate.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-top: var(--spacing-6);">
+        <h3 style="color: #0d9488;">Methodological Assumptions</h3>
+        <ul style="color: var(--gray-300);">
+          <li>ULAB sites concentrate in areas with high informal business density</li>
+          <li>Smelter operations produce detectable thermal and spectral signatures</li>
+          <li>POI data from OpenStreetMap and Google Places has reasonable coverage in South Asia</li>
+          <li>Lead contamination patterns correlate with site locations</li>
+          <li>Field verification teams can reliably classify site types and activity levels</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Data Sources -->
+    <section class="section section-dark">
+      <h2>Data Sources & Attribution</h2>
+
+      <h3>Geospatial Data</h3>
+      <ul style="color: var(--gray-300);">
+        <li><strong>OpenStreetMap (OSM):</strong> POI data, building footprints, road networks, administrative boundaries</li>
+        <li><strong>Google Places API:</strong> Business listings, shop locations, amenity data</li>
+        <li><strong>WorldPop:</strong> Population density grids at 100m resolution</li>
+        <li><strong>ESA Copernicus:</strong> Sentinel-2 multispectral satellite imagery</li>
+        <li><strong>NASA USGS:</strong> Industrial facility database, historical smelter records</li>
+      </ul>
+
+      <h3>Validation Data</h3>
+      <ul style="color: var(--gray-300);">
+        <li><strong>Pure Earth TSIP:</strong> 2,500+ field-verified toxic sites across South Asia</li>
+        <li><strong>ILZSG:</strong> International Lead and Zinc Study Group smelter registry</li>
+        <li><strong>USGS:</strong> Geological Survey industrial facility records</li>
+        <li><strong>Academic literature:</strong> Published studies on lead contamination hotspots</li>
+      </ul>
+
+      <p style="margin-top: var(--spacing-8); padding: var(--spacing-6); background-color: rgba(13, 148, 136, 0.1); border-left: 4px solid #14b8a6; border-radius: var(--radius-md);">
+        <strong>Data Citation:</strong> Users of this model are encouraged to cite the underlying data sources and acknowledge the Pure Earth TSIP program. Raw output predictions should not be used as the sole basis for remediation decisions without field verification.
+      </p>
+    </section>
+
+    <!-- References Section -->
+    <section class="section section-light">
+      <h2>References & Further Reading</h2>
+
+      <div class="card">
+        <h3 style="color: #14b8a6; font-size: var(--font-size-lg);">Key Publications</h3>
+        <ul style="color: var(--gray-300); line-height: 1.8;">
+          <li><strong>Pure Earth (2023).</strong> "Toxic Sites Identification Program: Methodology and Initial Results." Published report.</li>
+          <li><strong>Chen & Guestrin (2016).</strong> "XGBoost: A Scalable Tree Boosting System." Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining.</li>
+          <li><strong>He, Zhang, Ren & Sun (2016).</strong> "Deep Residual Learning for Image Recognition." IEEE Conference on Computer Vision and Pattern Recognition.</li>
+          <li><strong>United Nations Environment Programme (2021).</strong> "Global Lead Exposure Assessment." Technical Report.</li>
+          <li><strong>Landrigan et al. (2017).</strong> "The Lancet Commission on pollution and health." The Lancet, 391(10119), 462-512.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Pure Earth</h3>
+          <ul>
+            <li><a href="#">Official Website</a></li>
+            <li><a href="#">TSIP Program</a></li>
+            <li><a href="#">Publications</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Methodology Documentation</a></li>
+            <li><a href="#">Model Evaluation</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Partners</h3>
+          <ul>
+            <li><a href="#">Better Planet Lab</a></li>
+            <li><a href="#">University of Colorado Boulder</a></li>
+            <li><a href="#">USGS</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Technical</h3>
+          <ul>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Data Formats</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Pure Earth. Toxic Sites Identification Program. All rights reserved.</p>
+        <p>Built with support from Better Planet Lab, University of Colorado Boulder.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

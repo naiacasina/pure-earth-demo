@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Toxic Sites Identification Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      🌍 Pure Earth TSIP
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Dashboard Container -->
+  <div class="dashboard-container">
+    <!-- Left Sidebar -->
+    <div class="dashboard-sidebar">
+      <div style="margin-bottom: var(--spacing-12);">
+        <h3 style="color: #14b8a6; margin: 0 0 var(--spacing-3) 0; font-size: var(--font-size-lg);">NCR Delhi</h3>
+        <p style="color: #94a3b8; font-size: var(--font-size-sm); margin: 0;">Toxic Sites Screening</p>
+      </div>
+
+      <!-- Region Selector -->
+      <div class="form-group">
+        <label class="form-label">Region</label>
+        <select id="region-select" class="form-select">
+          <option>NCR Delhi</option>
+          <option disabled>Mumbai (Coming Soon)</option>
+          <option disabled>Kolkata (Coming Soon)</option>
+          <option disabled>Chennai (Coming Soon)</option>
+          <option disabled>Bangalore (Coming Soon)</option>
+        </select>
+      </div>
+
+      <!-- Site Type Filters -->
+      <div class="form-group">
+        <label class="form-label">Site Type</label>
+        <div class="form-checkbox">
+          <input type="checkbox" id="filter-ulab" checked>
+          <label for="filter-ulab">ULAB Recycling (Detected)</label>
+        </div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="filter-smelter" checked>
+          <label for="filter-smelter">Industrial Smelter (Detected)</label>
+        </div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="filter-verified" checked>
+          <label for="filter-verified">Verified ULAB Sites</label>
+        </div>
+      </div>
+
+      <!-- Risk Threshold Slider -->
+      <div class="form-group">
+        <label class="form-label">Risk Threshold</label>
+        <input type="range" id="risk-slider" class="form-range" min="0" max="1" step="0.05" value="0" style="margin-bottom: var(--spacing-3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: var(--font-size-sm); color: var(--gray-400);">
+          <span>Low Risk</span>
+          <span id="risk-value" style="color: #14b8a6; font-weight: 600;">0.00</span>
+          <span>High Risk</span>
+        </div>
+      </div>
+
+      <!-- Export Buttons -->
+      <div style="margin-top: var(--spacing-8);">
+        <button id="export-csv" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-bottom: var(--spacing-3);">
+          Export CSV
+        </button>
+        <button id="export-report" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+          Export Report
+        </button>
+      </div>
+
+      <!-- Legend -->
+      <div style="margin-top: var(--spacing-12); padding-top: var(--spacing-6); border-top: 1px solid var(--navy-700);">
+        <h4 style="color: #14b8a6; margin-bottom: var(--spacing-4);">Legend</h4>
+        <div style="font-size: var(--font-size-sm); color: var(--gray-300); line-height: 1.8;">
+          <div style="margin-bottom: var(--spacing-3);">
+            <span style="display: inline-block; width: 16px; height: 16px; background: #9333ea; border-radius: 50%; margin-right: var(--spacing-2);"></span>
+            Verified ULAB
+          </div>
+          <div style="margin-bottom: var(--spacing-3);">
+            <span style="display: inline-block; width: 16px; height: 16px; background: #ef4444; border-radius: 50%; margin-right: var(--spacing-2);"></span>
+            Detected (High Risk)
+          </div>
+          <div style="margin-bottom: var(--spacing-3);">
+            <span style="display: inline-block; width: 16px; height: 16px; background: #f97316; border-radius: 50%; margin-right: var(--spacing-2);"></span>
+            Detected (Medium Risk)
+          </div>
+          <div>
+            <span style="display: inline-block; width: 16px; height: 16px; background: #eab308; border-radius: 50%; margin-right: var(--spacing-2);"></span>
+            Detected (Low Risk)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-main">
+      <!-- Top Bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <span style="color: #94a3b8; font-size: var(--font-size-sm);">Visible Sites:</span>
+          <span class="filter-count">0</span>
+        </div>
+        <div class="topbar-right">
+          <button id="analytics-toggle" class="btn btn-small btn-secondary">
+            Analytics
+          </button>
+        </div>
+      </div>
+
+      <!-- Map Container -->
+      <div id="map" class="map-container"></div>
+
+      <!-- Timeline -->
+      <div class="timeline-container">
+        <button class="timeline-play" id="timeline-play" title="Play timeline animation">▶</button>
+        <input type="range" id="timeline-slider" class="timeline-slider form-range" min="0" max="90" value="90">
+        <span class="timeline-date" id="timeline-date">Jan 1, 2026</span>
+      </div>
+
+      <!-- Site Details Panel (Hidden by default) -->
+      <div id="site-panel" class="dashboard-panel hidden"></div>
+
+      <!-- Analytics Drawer -->
+      <div id="analytics-drawer" class="analytics-drawer">
+        <div class="analytics-header">
+          <h4 style="margin: 0; color: #cbd5e1;">Analytics Overview</h4>
+          <button class="btn-icon btn-secondary" onclick="document.getElementById('analytics-drawer').classList.toggle('open');" style="padding: 4px; width: 32px; height: 32px;">×</button>
+        </div>
+        <div class="analytics-content">
+          <!-- Stat Cards -->
+          <div class="analytics-stat">
+            <div class="analytics-stat-value" id="stat-total">0</div>
+            <div class="analytics-stat-label">Total Detected</div>
+          </div>
+          <div class="analytics-stat">
+            <div class="analytics-stat-value" id="stat-high-risk">0</div>
+            <div class="analytics-stat-label">High Risk</div>
+          </div>
+          <div class="analytics-stat">
+            <div class="analytics-stat-value" id="stat-pending">0</div>
+            <div class="analytics-stat-label">Pending Verify</div>
+          </div>
+          <div class="analytics-stat">
+            <div class="analytics-stat-value" id="stat-verified">13</div>
+            <div class="analytics-stat-label">Verified Sites</div>
+          </div>
+
+          <!-- Charts Row 2 -->
+          <div style="grid-column: 1; min-height: 200px;">
+            <canvas id="chart-site-type"></canvas>
+          </div>
+          <div style="grid-column: 2; min-height: 200px;">
+            <canvas id="chart-risk-dist"></canvas>
+          </div>
+          <div style="grid-column: 3 / span 2; min-height: 200px;">
+            <canvas id="chart-timeline"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/dashboard.js"></script>
+
+  <script>
+    // Initialize charts after dashboard loads
+    setTimeout(() => {
+      initializeCharts('chart', DETECTED_ULAB_SITES, DETECTED_SMELTER_SITES);
+    }, 500);
+  </script>
+</body>
+</html>

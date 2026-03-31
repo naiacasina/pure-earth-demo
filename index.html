@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toxic Sites Identification Program - Pure Earth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      🌍 Pure Earth TSIP
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Mapping Lead Contamination with Machine Learning</h1>
+      <p class="hero-subtitle">
+        A screening tool for Pure Earth's Toxic Sites Identification Program. Using advanced machine learning models to detect informal lead-acid battery recycling operations and industrial smelters across South Asia.
+      </p>
+      <div class="hero-cta">
+        <a href="dashboard.html" class="btn btn-primary">
+          Launch Dashboard
+        </a>
+        <a href="methodology.html" class="btn btn-outline">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: var(--spacing-16);">How It Works</h2>
+      <div class="card-grid">
+        <!-- Feature 1: Contextual Model -->
+        <div class="card">
+          <h3 style="color: #9333ea; margin-bottom: var(--spacing-4);">
+            Contextual Model
+          </h3>
+          <p>
+            Our XGBoost model analyzes geospatial and socioeconomic features to identify likely informal lead-acid battery (ULAB) recycling sites. Features include battery shop density, scrap metal dealers, population density, and proximity to residential areas.
+          </p>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: 0;">
+            <strong>Accuracy:</strong> 87% precision, 82% recall, 0.91 AUC-ROC
+          </p>
+        </div>
+
+        <!-- Feature 2: Satellite Model -->
+        <div class="card">
+          <h3 style="color: #f97316; margin-bottom: var(--spacing-4);">
+            Satellite Imagery Model
+          </h3>
+          <p>
+            A deep learning CNN (ResNet-50) analyzes multispectral Sentinel-2 imagery to detect industrial smelter facilities. The model identifies thermal signatures, emission patterns, building footprints, and spectral characteristics.
+          </p>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: 0;">
+            <strong>Accuracy:</strong> 91% precision, 78% recall, 0.89 AUC-ROC
+          </p>
+        </div>
+
+        <!-- Feature 3: Risk Prioritization -->
+        <div class="card">
+          <h3 style="color: #22c55e; margin-bottom: var(--spacing-4);">
+            Risk Prioritization
+          </h3>
+          <p>
+            Each detected site receives a risk score from 0.0 to 1.0 based on model confidence and contextual factors. Sites are prioritized for field verification based on risk level, ensuring resources focus on the highest-impact interventions.
+          </p>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: 0;">
+            <strong>Target:</strong> Protect vulnerable populations from lead exposure
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: var(--spacing-16);">Impact in NCR Delhi</h2>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number">500M+</div>
+          <div class="stat-label">Children at Risk</div>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-top: var(--spacing-3); margin-bottom: 0;">
+            Estimated exposure to lead contamination globally
+          </p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">188</div>
+          <div class="stat-label">High-Risk Areas</div>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-top: var(--spacing-3); margin-bottom: 0;">
+            Identified in NCR Delhi region from model output
+          </p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">13</div>
+          <div class="stat-label">Verified ULAB Sites</div>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-top: var(--spacing-3); margin-bottom: 0;">
+            Confirmed informal battery recycling operations
+          </p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">33</div>
+          <div class="stat-label">Detected Sites</div>
+          <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-top: var(--spacing-3); margin-bottom: 0;">
+            Pending field verification (ULAB + Smelters)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section section-light">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <h2>About This Initiative</h2>
+        <p>
+          Lead contamination from informal recycling operations and industrial smelters poses a severe public health threat, particularly to children in South Asia. Blood lead levels above 5 µg/dL are associated with developmental delays, learning disabilities, and long-term health problems.
+        </p>
+        <p>
+          This Toxic Sites Identification Program combines machine learning with ground-truth data to help identify and prioritize these high-risk locations. By screening vast geographic areas with remote sensing and contextual analysis, we enable Pure Earth and partner organizations to focus limited field verification resources on the most likely sites.
+        </p>
+        <p>
+          The dashboard presented here demonstrates the screening capability using real model outputs and verified site locations from NCR Delhi. This tool is designed to support evidence-based intervention planning and environmental health decision-making.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section section-dark">
+    <div class="container" style="text-align: center;">
+      <h2>Ready to Explore the Data?</h2>
+      <p style="font-size: var(--font-size-lg); color: var(--gray-300); margin-bottom: var(--spacing-8); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Launch the interactive dashboard to view detected toxic sites, apply filters, and generate reports for field teams.
+      </p>
+      <a href="dashboard.html" class="btn btn-primary">
+        Open Interactive Dashboard
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Pure Earth</h3>
+          <ul>
+            <li><a href="#">Official Website</a></li>
+            <li><a href="#">TSIP Program</a></li>
+            <li><a href="#">Publications</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Methodology Documentation</a></li>
+            <li><a href="#">Model Evaluation</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Partners</h3>
+          <ul>
+            <li><a href="#">Better Planet Lab</a></li>
+            <li><a href="#">University of Colorado Boulder</a></li>
+            <li><a href="#">USGS</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Technical</h3>
+          <ul>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Data Formats</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pure Earth. Toxic Sites Identification Program. All rights reserved.</p>
+        <p>Built with support from Better Planet Lab, University of Colorado Boulder.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

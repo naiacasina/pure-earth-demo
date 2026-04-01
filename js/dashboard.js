@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================================================
 
 function initializeMap() {
-  map = L.map('map').setView([28.65, 77.2], 11);
+  map = L.map('map', { zoomControl: false }).setView([28.65, 77.2], 11);
 
   // CartoDB Dark basemap
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {

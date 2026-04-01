@@ -870,6 +870,7 @@ a:hover {
   grid-template-columns: 1fr 1fr 2fr;
   gap: var(--spacing-6);
   padding: var(--spacing-6);
+  height: 280px;
 }
 
 .analytics-content {
@@ -886,6 +887,15 @@ a:hover {
   border-radius: var(--radius-lg);
   padding: var(--spacing-4);
   border: 1px solid var(--navy-600);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.analytics-chart canvas {
+  flex: 1;
+  min-height: 0;
+  max-height: 220px;
 }
 
 .analytics-chart h5 {
@@ -1557,6 +1567,18 @@ a:hover {
 .problem-icon {
   font-size: 2.5rem;
   margin-bottom: var(--spacing-4);
+}
+
+.problem-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 auto var(--spacing-4);
 }
 
 .problem-card h4 {

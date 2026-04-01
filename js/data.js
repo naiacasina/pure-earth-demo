@@ -459,7 +459,7 @@ const DETECTED_SMELTER_SITES = [
     riskScore: 0.87,
     status: 'Pending Verification',
     dateDetected: '2026-02-03',
-    flaggedBecause: 'Medium industrial facility (2,800m²), sustained thermal signature, multiple chimney structures detected, proximity to raw material source'
+    flaggedBecause: 'Medium industrial facility (2,800m²), SWIR reflectance anomaly, multiple chimney structures detected, proximity to raw material source'
   },
   {
     id: 'DETECT-SMELTER-003',
@@ -486,7 +486,7 @@ const DETECTED_SMELTER_SITES = [
     riskScore: 0.88,
     status: 'Scheduled for Visit',
     dateDetected: '2026-03-08',
-    flaggedBecause: 'Large industrial complex (3,600m²), emission stacks visible, thermal anomalies detected, proximity to transportation network'
+    flaggedBecause: 'Large industrial complex (3,600m²), emission stacks visible, spectral anomalies detected, proximity to transportation network'
   },
   {
     id: 'DETECT-SMELTER-006',
@@ -504,7 +504,7 @@ const DETECTED_SMELTER_SITES = [
     riskScore: 0.92,
     status: 'Under Review',
     dateDetected: '2026-03-20',
-    flaggedBecause: 'Large facility (4,500m²), active furnace signatures, continuous operational patterns, high lead contamination risk'
+    flaggedBecause: 'Large facility (4,500m²), industrial spectral signature, continuous operational patterns, high lead contamination risk'
   },
   {
     id: 'DETECT-SMELTER-008',
@@ -532,22 +532,22 @@ const ULAB_FEATURES = [
   { name: 'Scrap Metal Dealers', importance: 0.88 },
   { name: 'Population Density', importance: 0.82 },
   { name: 'Proximity to Residential', importance: 0.78 },
-  { name: 'Road Dust Lead Levels', importance: 0.75 },
-  { name: 'Water Source Distance', importance: 0.68 },
+  { name: 'Road Network Density', importance: 0.72 },
+  { name: 'Land Use Classification', importance: 0.68 },
   { name: 'School Proximity', importance: 0.65 },
-  { name: 'Industrial Activity', importance: 0.60 }
+  { name: 'Industrial Zone Proximity', importance: 0.60 }
 ];
 
 // Feature importance for Smelter model
 const SMELTER_FEATURES = [
-  { name: 'Thermal Signature', importance: 0.98 },
-  { name: 'Emission Patterns', importance: 0.92 },
-  { name: 'Building Footprint', importance: 0.85 },
-  { name: 'Spectral Signature', importance: 0.89 },
-  { name: 'Rail Access', importance: 0.72 },
-  { name: 'Dust Patterns', importance: 0.68 },
-  { name: 'Historical Records', importance: 0.64 },
-  { name: 'Transportation Network', importance: 0.55 }
+  { name: 'Building Morphology', importance: 0.95 },
+  { name: 'SWIR Reflectance', importance: 0.90 },
+  { name: 'Land Cover Context', importance: 0.85 },
+  { name: 'Spectral Signature', importance: 0.82 },
+  { name: 'Vegetation Suppression', importance: 0.75 },
+  { name: 'Rail/Road Access', importance: 0.68 },
+  { name: 'Facility Size', importance: 0.64 },
+  { name: 'Surrounding Land Use', importance: 0.55 }
 ];
 
 // Timeline dates
@@ -559,27 +559,21 @@ const METHODOLOGY_DATA = {
   contextualModel: {
     name: 'Contextual Model (ULAB)',
     algorithm: 'XGBoost',
-    description: 'Analyzes geospatial, socioeconomic, and environmental features to identify likely informal lead-acid battery recycling sites',
-    trainingData: '2,500+ labeled sites across India and Southeast Asia',
+    description: 'Analyzes geospatial and socioeconomic features to identify likely informal lead-acid battery recycling sites',
+    trainingData: '13 verified ULAB sites in NCR Delhi as training labels, 3,746 grid cells scanned',
     features: ULAB_FEATURES,
     metrics: {
-      precision: 0.87,
-      recall: 0.82,
-      f1: 0.84,
-      auc: 0.91
+      note: 'Formal metrics pending field verification'
     }
   },
   satelliteModel: {
     name: 'Satellite Imagery Model (Smelters)',
-    algorithm: 'Convolutional Neural Network (ResNet-50)',
-    description: 'Analyzes Sentinel-2 multispectral imagery to detect industrial smelter facilities through thermal and spectral signatures',
-    trainingData: 'USGS industrial facility database, ILZSG smelter records, Sentinel-2 archive 2019-2026',
+    algorithm: 'Convolutional Neural Network (Deep Learning)',
+    description: 'Analyzes Sentinel-2 multispectral imagery to detect industrial smelter facilities through spatial and spectral signatures',
+    trainingData: 'USGS and ILZSG geolocated smelter records, Sentinel-2 imagery archive',
     features: SMELTER_FEATURES,
     metrics: {
-      precision: 0.91,
-      recall: 0.78,
-      f1: 0.84,
-      auc: 0.89
+      note: 'Formal metrics pending field verification'
     }
   }
 };

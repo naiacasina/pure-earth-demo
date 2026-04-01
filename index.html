@@ -53,7 +53,7 @@
             Our XGBoost model analyzes geospatial and socioeconomic features to identify likely informal lead-acid battery (ULAB) recycling sites. Features include battery shop density, scrap metal dealers, population density, and proximity to residential areas.
           </p>
           <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: 0;">
-            <strong>Accuracy:</strong> 87% precision, 82% recall, 0.91 AUC-ROC
+            <strong>Proof of concept:</strong> NCR Delhi — 188 high-risk cells, 13 verified sites matched
           </p>
         </div>
 
@@ -63,10 +63,10 @@
             Satellite Imagery Model
           </h3>
           <p>
-            A deep learning CNN (ResNet-50) analyzes multispectral Sentinel-2 imagery to detect industrial smelter facilities. The model identifies thermal signatures, emission patterns, building footprints, and spectral characteristics.
+            A deep learning CNN analyzes multispectral Sentinel-2 imagery to detect industrial smelter facilities. The model identifies spatial patterns, building morphology, land cover context, and spectral characteristics associated with smelter operations.
           </p>
           <p style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: 0;">
-            <strong>Accuracy:</strong> 91% precision, 78% recall, 0.89 AUC-ROC
+            <strong>Training data:</strong> USGS + ILZSG geolocated smelter records
           </p>
         </div>
 
@@ -129,7 +129,7 @@
       <div style="max-width: 800px; margin: 0 auto;">
         <h2>About This Initiative</h2>
         <p>
-          Lead contamination from informal recycling operations and industrial smelters poses a severe public health threat, particularly to children in South Asia. Blood lead levels above 5 µg/dL are associated with developmental delays, learning disabilities, and long-term health problems.
+          Lead contamination from informal recycling operations and industrial smelters poses a severe public health threat, particularly to children in South Asia. There is no safe level of blood lead — even low concentrations are associated with developmental delays, learning disabilities, and long-term health problems.
         </p>
         <p>
           This Toxic Sites Identification Program combines machine learning with ground-truth data to help identify and prioritize these high-risk locations. By screening vast geographic areas with remote sensing and contextual analysis, we enable Pure Earth and partner organizations to focus limited field verification resources on the most likely sites.

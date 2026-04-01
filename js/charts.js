@@ -195,66 +195,15 @@ function createTimelineChart(containerId, timelineData) {
 }
 
 // Create model performance comparison chart
+// Note: Performance metrics are illustrative placeholders.
+// Formal metrics pending field verification campaigns.
 function createPerformanceChart(containerId) {
   const ctx = document.getElementById(containerId);
   if (!ctx) return null;
 
-  return new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['Precision', 'Recall', 'F1 Score', 'AUC-ROC'],
-      datasets: [
-        {
-          label: 'Contextual Model (ULAB)',
-          data: [0.87, 0.82, 0.84, 0.91],
-          borderColor: '#9333ea',
-          backgroundColor: 'rgba(147, 51, 234, 0.15)',
-          pointBackgroundColor: '#9333ea',
-          pointBorderColor: '#c084fc',
-          pointBorderWidth: 2,
-          pointHoverRadius: 5,
-          borderWidth: 2
-        },
-        {
-          label: 'Satellite Model (Smelters)',
-          data: [0.91, 0.78, 0.84, 0.89],
-          borderColor: '#f97316',
-          backgroundColor: 'rgba(249, 115, 22, 0.15)',
-          pointBackgroundColor: '#f97316',
-          pointBorderColor: '#fb923c',
-          pointBorderWidth: 2,
-          pointHoverRadius: 5,
-          borderWidth: 2
-        }
-      ]
-    },
-    options: {
-      ...chartDefaults,
-      plugins: {
-        ...chartDefaults.plugins,
-        legend: {
-          position: 'bottom'
-        }
-      },
-      scales: {
-        r: {
-          beginAtZero: true,
-          max: 1,
-          ticks: {
-            stepSize: 0.2,
-            color: '#94a3b8'
-          },
-          grid: {
-            color: '#334155'
-          },
-          pointLabels: {
-            color: '#cbd5e1',
-            font: { size: 12, weight: '500' }
-          }
-        }
-      }
-    }
-  });
+  // This chart is intentionally not rendered until real metrics are available.
+  // Return null to skip rendering.
+  return null;
 }
 
 // Create feature importance chart

@@ -18,9 +18,17 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="field-guide.html">Field Guide</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
+
+  <!-- Demo Notice Banner -->
+  <div class="demo-banner">
+    <span class="demo-banner-icon">&#9432;</span>
+    <span>This dashboard includes <strong>mockup detections</strong> for demonstration purposes. Verified ULAB sites and heatmap data are from real model outputs (NCR Delhi).</span>
+    <button class="demo-banner-close" onclick="this.parentElement.style.display='none'">&times;</button>
+  </div>
 
   <!-- Main Dashboard Container -->
   <div class="dashboard-container">
@@ -107,6 +115,12 @@
 
     <!-- Main Content Area -->
     <div class="dashboard-main">
+      <!-- Loading Overlay -->
+      <div id="map-loading" class="map-loading">
+        <div class="loading-spinner"></div>
+        <p>Loading map data...</p>
+      </div>
+
       <!-- Top Bar -->
       <div class="topbar">
         <div class="topbar-left">
@@ -139,8 +153,8 @@
           <h4 style="margin: 0; color: #cbd5e1;">Analytics Overview</h4>
           <button class="btn-icon btn-secondary" onclick="document.getElementById('analytics-drawer').classList.toggle('open');" style="padding: 4px; width: 32px; height: 32px;">×</button>
         </div>
-        <div class="analytics-content">
-          <!-- Stat Cards -->
+        <!-- Stats Row -->
+        <div class="analytics-stats-row">
           <div class="analytics-stat">
             <div class="analytics-stat-value" id="stat-total">0</div>
             <div class="analytics-stat-label">Total Detected</div>
@@ -157,15 +171,19 @@
             <div class="analytics-stat-value" id="stat-verified">13</div>
             <div class="analytics-stat-label">Verified Sites</div>
           </div>
-
-          <!-- Charts Row 2 -->
-          <div style="grid-column: 1; min-height: 200px;">
+        </div>
+        <!-- Charts Row -->
+        <div class="analytics-charts-row">
+          <div class="analytics-chart">
+            <h5>Site Type Distribution</h5>
             <canvas id="chart-site-type"></canvas>
           </div>
-          <div style="grid-column: 2; min-height: 200px;">
+          <div class="analytics-chart">
+            <h5>Risk Distribution</h5>
             <canvas id="chart-risk-dist"></canvas>
           </div>
-          <div style="grid-column: 3 / span 2; min-height: 200px;">
+          <div class="analytics-chart">
+            <h5>Detection Timeline</h5>
             <canvas id="chart-timeline"></canvas>
           </div>
         </div>

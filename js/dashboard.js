@@ -26,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeFilters();
   initializeTimeline();
   updateFilteredSites();
+  // Hide loading overlay
+  setTimeout(() => {
+    const loadingEl = document.getElementById('map-loading');
+    if (loadingEl) loadingEl.classList.add('hidden');
+  }, 800);
   Toast.show('Dashboard loaded. Use filters to explore toxic sites.', 'info', 2000);
 });
 

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Guide - Toxic Sites Identification Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <span class="brand-icon">&#127759;</span> Pure Earth TSIP
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="field-guide.html">Field Guide</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Hero -->
+    <section class="section section-dark">
+      <div class="section-header">
+        <div class="hero-badge">For Field Teams</div>
+        <h1 style="margin-top: var(--spacing-4);">Field Verification Guide</h1>
+        <p class="section-subtitle">
+          How to use the TSIP screening dashboard to plan and execute site verification visits. This guide is designed for field team members and Pure Earth partners conducting on-the-ground investigations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="section section-light">
+      <h2>Quick Start: Using the Dashboard</h2>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="guide-step-number">1</div>
+          <div class="guide-step-content">
+            <h3>Filter by Risk Level</h3>
+            <p>Use the <strong>Risk Threshold</strong> slider in the left sidebar to focus on the highest-risk sites first. We recommend starting with a threshold of <strong>0.80+</strong> for initial field campaigns, then lowering as resources allow.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-number">2</div>
+          <div class="guide-step-content">
+            <h3>Select a Site</h3>
+            <p>Click any marker on the map to open its detail panel. Review the <strong>risk score</strong>, <strong>"Why Flagged"</strong> explanation, and <strong>feature importance</strong> bars to understand what triggered the detection.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-number">3</div>
+          <div class="guide-step-content">
+            <h3>Plan Your Route</h3>
+            <p>Use the map to identify <strong>geographic clusters</strong> of high-risk detections. Group nearby sites into a single field visit to maximize coverage per campaign.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-number">4</div>
+          <div class="guide-step-content">
+            <h3>Export for the Field</h3>
+            <p>Click <strong>Export CSV</strong> to download a spreadsheet of all filtered sites with coordinates, risk scores, and detection details. This can be loaded into Google Maps or other navigation tools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interpreting Risk Scores -->
+    <section class="section section-dark">
+      <h2>Interpreting Risk Scores</h2>
+      <p style="margin-bottom: var(--spacing-8);">
+        Each detected site receives a score from 0.0 to 1.0 reflecting the model's confidence that contamination activity is present. Here is how to interpret these scores in the field:
+      </p>
+
+      <div class="risk-guide-grid">
+        <div class="risk-guide-card" style="border-left: 4px solid #ef4444;">
+          <div class="risk-guide-range" style="color: #ef4444;">0.85 - 1.00</div>
+          <h4>Critical Priority</h4>
+          <p>Very high model confidence. These sites show multiple strong indicators. Schedule visits within <strong>2 weeks</strong>. Expect to find active operations or significant contamination evidence.</p>
+          <div class="risk-guide-action">
+            <strong>Action:</strong> Immediate field verification. Bring full sampling kit and PPE.
+          </div>
+        </div>
+
+        <div class="risk-guide-card" style="border-left: 4px solid #f97316;">
+          <div class="risk-guide-range" style="color: #f97316;">0.70 - 0.84</div>
+          <h4>High Priority</h4>
+          <p>Strong indicators present but with some uncertainty. These sites merit investigation and may involve smaller-scale or intermittent operations.</p>
+          <div class="risk-guide-action">
+            <strong>Action:</strong> Schedule visit within the current campaign cycle. Standard field investigation protocol.
+          </div>
+        </div>
+
+        <div class="risk-guide-card" style="border-left: 4px solid #eab308;">
+          <div class="risk-guide-range" style="color: #eab308;">0.50 - 0.69</div>
+          <h4>Moderate Priority</h4>
+          <p>Some contextual indicators present but model is less certain. Could be early-stage activity, recently closed sites, or false positives from legitimate businesses.</p>
+          <div class="risk-guide-action">
+            <strong>Action:</strong> Include in extended campaigns or verify remotely via satellite imagery updates if resources are limited.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What to Look For -->
+    <section class="section section-light">
+      <h2>What to Look For On-Site</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3 style="color: #9333ea;">ULAB Recycling Sites</h3>
+          <ul style="color: var(--gray-300); line-height: 2;">
+            <li>Piles of used lead-acid batteries (car/truck/motorcycle)</li>
+            <li>Battery cases (plastic shells) stacked or discarded</li>
+            <li>Lead ingots or lead plates drying in open air</li>
+            <li>Open-air smelting fires or makeshift furnaces</li>
+            <li>Dark-colored soil or dust (lead contamination indicator)</li>
+            <li>Acid stains on ground (sulfuric acid from batteries)</li>
+            <li>Workers without protective equipment (gloves, masks)</li>
+            <li>Proximity to residential buildings, schools, or water sources</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="color: #f97316;">Industrial Smelters</h3>
+          <ul style="color: var(--gray-300); line-height: 2;">
+            <li>Large industrial buildings with chimneys or emission stacks</li>
+            <li>Visible smoke or dust emissions</li>
+            <li>Surrounding vegetation die-off or discoloration</li>
+            <li>Slag heaps or waste piles on the facility perimeter</li>
+            <li>Heavy vehicle traffic (trucks carrying raw materials or products)</li>
+            <li>Storage areas with metal ingots, scrap, or ore</li>
+            <li>Absence of visible pollution control equipment</li>
+            <li>Strong metallic odors in the surrounding area</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Collection -->
+    <section class="section section-dark">
+      <h2>Field Data Collection Checklist</h2>
+      <p style="margin-bottom: var(--spacing-8);">
+        When visiting a flagged site, document the following to feed back into the model improvement cycle:
+      </p>
+
+      <div class="checklist-grid">
+        <div class="checklist-card">
+          <h4>&#128205; Location &amp; Access</h4>
+          <ul>
+            <li>GPS coordinates (confirm or correct the predicted location)</li>
+            <li>Physical address or landmark description</li>
+            <li>Accessibility notes (road conditions, security considerations)</li>
+          </ul>
+        </div>
+
+        <div class="checklist-card">
+          <h4>&#128248; Site Documentation</h4>
+          <ul>
+            <li>Photographs of the site (overview + details)</li>
+            <li>Estimated facility size (footprint in m&sup2;)</li>
+            <li>Activity level (active, intermittent, abandoned)</li>
+          </ul>
+        </div>
+
+        <div class="checklist-card">
+          <h4>&#128100; Community Context</h4>
+          <ul>
+            <li>Estimated number of workers observed</li>
+            <li>Use of protective equipment (yes/no)</li>
+            <li>Distance to nearest residential buildings</li>
+            <li>Distance to nearest school or healthcare facility</li>
+          </ul>
+        </div>
+
+        <div class="checklist-card">
+          <h4>&#128300; Environmental Observations</h4>
+          <ul>
+            <li>Visible contamination (soil discoloration, acid stains)</li>
+            <li>Vegetation condition in surrounding area</li>
+            <li>Water sources nearby (open drains, wells, rivers)</li>
+            <li>Waste disposal practices observed</li>
+          </ul>
+        </div>
+
+        <div class="checklist-card">
+          <h4>&#9989; Verification Result</h4>
+          <ul>
+            <li><strong>True positive:</strong> Contamination activity confirmed</li>
+            <li><strong>False positive:</strong> No contamination activity found (note what IS there)</li>
+            <li><strong>Inconclusive:</strong> Unable to determine (note reason)</li>
+            <li>Contamination type: ULAB / Smelter / Other / None</li>
+          </ul>
+        </div>
+
+        <div class="checklist-card">
+          <h4>&#128221; Recommended Follow-up</h4>
+          <ul>
+            <li>Urgency level for remediation</li>
+            <li>Soil/water sampling needed (yes/no)</li>
+            <li>Blood lead level testing recommended for community</li>
+            <li>Regulatory notification required</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety -->
+    <section class="section section-light">
+      <h2>Safety Protocols</h2>
+
+      <div style="max-width: 800px; margin: 0 auto; padding: var(--spacing-8); background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-xl);">
+        <h3 style="color: #ef4444; margin-bottom: var(--spacing-6);">&#9888; Lead Exposure Precautions</h3>
+        <p style="color: var(--gray-300); margin-bottom: var(--spacing-4);">
+          Lead is a potent neurotoxin. Field teams must follow safety protocols when visiting suspected contamination sites:
+        </p>
+        <ul style="color: var(--gray-300); line-height: 2;">
+          <li>Wear N95 mask or better respiratory protection at all times on-site</li>
+          <li>Wear disposable gloves; avoid touching soil, dust, or materials directly</li>
+          <li>Do not eat, drink, or smoke while at or near the site</li>
+          <li>Wear closed-toe shoes; use shoe covers if available</li>
+          <li>Wash hands and face thoroughly after leaving the site</li>
+          <li>Change clothes before entering vehicles or returning to other locations</li>
+          <li>Limit on-site time to the minimum necessary for documentation</li>
+          <li>If sampling soil or water, use proper collection protocols and sealed containers</li>
+        </ul>
+        <p style="color: var(--gray-400); font-size: var(--font-size-sm); margin-top: var(--spacing-6); margin-bottom: 0;">
+          Field team members should receive regular blood lead level testing as part of occupational health monitoring.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Pure Earth</h3>
+          <ul>
+            <li><a href="https://www.pureearth.org/" target="_blank">Official Website</a></li>
+            <li><a href="about.html">About This Project</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="methodology.html">Methodology</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Technical</h3>
+          <ul>
+            <li><a href="https://github.com/naiacasina/pure-earth-demo" target="_blank">GitHub Repository</a></li>
+            <li><a href="methodology.html#references">References</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pure Earth. Toxic Sites Identification Program.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

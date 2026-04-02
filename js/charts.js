@@ -4,37 +4,37 @@
    ========================================================================== */
 
 // Initialize Chart.js with custom defaults
-Chart.defaults.color = '#cbd5e1';
-Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-Chart.defaults.borderColor = '#334155';
-Chart.defaults.backgroundColor = 'rgba(13, 148, 136, 0.1)';
+Chart.defaults.color = '#707070';
+Chart.defaults.font.family = "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+Chart.defaults.borderColor = '#e5e5e5';
+Chart.defaults.backgroundColor = 'rgba(24, 165, 88, 0.08)';
 
-// Custom chart theme
+// Custom chart theme — light
 const chartDefaults = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
       labels: {
-        color: '#cbd5e1',
+        color: '#404040',
         usePointStyle: true,
         padding: 15,
         font: { size: 12, weight: '500' }
       }
     },
     tooltip: {
-      backgroundColor: 'rgba(15, 23, 42, 0.9)',
-      titleColor: '#f1f5f9',
-      bodyColor: '#cbd5e1',
-      borderColor: '#334155',
+      backgroundColor: 'rgba(10, 10, 10, 0.85)',
+      titleColor: '#ffffff',
+      bodyColor: '#e5e5e5',
+      borderColor: '#404040',
       borderWidth: 1,
       padding: 12,
       displayColors: true,
       callbacks: {
         labelColor: function (context) {
           return {
-            borderColor: context.dataset.borderColor || '#14b8a6',
-            backgroundColor: context.dataset.backgroundColor || 'rgba(13, 148, 136, 0.8)'
+            borderColor: context.dataset.borderColor || '#18a558',
+            backgroundColor: context.dataset.backgroundColor || 'rgba(24, 165, 88, 0.8)'
           };
         }
       }
@@ -42,13 +42,13 @@ const chartDefaults = {
   },
   scales: {
     x: {
-      ticks: { color: '#94a3b8', font: { size: 11 } },
-      grid: { color: '#334155', drawBorder: false },
+      ticks: { color: '#707070', font: { size: 11 } },
+      grid: { color: '#e5e5e5', drawBorder: false },
       border: { display: false }
     },
     y: {
-      ticks: { color: '#94a3b8', font: { size: 11 } },
-      grid: { color: '#334155', drawBorder: false },
+      ticks: { color: '#707070', font: { size: 11 } },
+      grid: { color: '#e5e5e5', drawBorder: false },
       border: { display: false }
     }
   }
@@ -65,8 +65,8 @@ function createSiteTypeChart(containerId, data) {
       labels: ['ULAB Recycling', 'Industrial Smelters', 'Verified Sites'],
       datasets: [{
         data: [data.ulab, data.smelter, data.verified],
-        backgroundColor: ['#9333ea', '#f97316', '#22c55e'],
-        borderColor: '#1e293b',
+        backgroundColor: ['#7c3aed', '#f97316', '#18a558'],
+        borderColor: '#ffffff',
         borderWidth: 2,
         hoverOffset: 8
       }]
@@ -78,7 +78,7 @@ function createSiteTypeChart(containerId, data) {
         legend: {
           position: 'bottom',
           labels: {
-            color: '#cbd5e1',
+            color: '#404040',
             usePointStyle: true,
             padding: 15,
             font: { size: 12, weight: '500' }
@@ -156,12 +156,12 @@ function createTimelineChart(containerId, timelineData) {
       datasets: [{
         label: 'Cumulative Detections',
         data: data,
-        borderColor: '#14b8a6',
-        backgroundColor: 'rgba(13, 148, 136, 0.1)',
+        borderColor: '#18a558',
+        backgroundColor: 'rgba(24, 165, 88, 0.08)',
         fill: true,
         tension: 0.4,
-        pointBackgroundColor: '#14b8a6',
-        pointBorderColor: '#0d9488',
+        pointBackgroundColor: '#18a558',
+        pointBorderColor: '#149b5a',
         pointRadius: 3,
         pointHoverRadius: 5,
         pointBorderWidth: 2
@@ -174,7 +174,7 @@ function createTimelineChart(containerId, timelineData) {
         legend: {
           position: 'top',
           labels: {
-            color: '#cbd5e1',
+            color: '#404040',
             usePointStyle: true,
             padding: 15,
             font: { size: 12, weight: '500' }
@@ -221,7 +221,7 @@ function createFeatureImportanceChart(containerId, features) {
         label: 'Importance Score',
         data: sortedFeatures.map(f => f.importance),
         backgroundColor: 'rgba(13, 148, 136, 0.8)',
-        borderColor: '#0d9488',
+        borderColor: '#149b5a',
         borderWidth: 1,
         borderRadius: 4
       }]
@@ -333,7 +333,7 @@ function createRiskLevelChart(containerId, ulabSites, smelterSites) {
           '#f97316',
           '#eab308'
         ],
-        borderColor: '#1e293b',
+        borderColor: '#ffffff',
         borderWidth: 2,
         hoverOffset: 8
       }]
@@ -345,7 +345,7 @@ function createRiskLevelChart(containerId, ulabSites, smelterSites) {
         legend: {
           position: 'bottom',
           labels: {
-            color: '#cbd5e1',
+            color: '#404040',
             usePointStyle: true,
             padding: 15,
             font: { size: 12, weight: '500' }
@@ -384,7 +384,7 @@ function createContaminationTable(containerId, ulabSites, smelterSites) {
 
     html += `
       <tr>
-        <td style="font-weight: 500; color: #cbd5e1;">${site.id}</td>
+        <td style="font-weight: 500; color: #404040;">${site.id}</td>
         <td><span class="badge badge-${type.toLowerCase()}">${type}</span></td>
         <td>
           <span style="color: ${Utils.getRiskColor(site.riskScore)}; font-weight: 600;">

@@ -98,9 +98,9 @@ function updateHeatmapLayer() {
     max: 1.0,
     minOpacity: 0.3,
     gradient: {
-      0.0: '#1e293b',
-      0.2: '#0d9488',
-      0.5: '#14b8a6',
+      0.0: '#d4f5e0',
+      0.2: '#18a558',
+      0.5: '#eab308',
       0.8: '#f97316',
       1.0: '#ef4444'
     }
@@ -127,7 +127,7 @@ function updateVerifiedMarkers() {
     marker.bindPopup(`
       <div style="width: 200px;">
         <h4 style="margin: 0 0 8px 0; color: #c084fc;">${site.name}</h4>
-        <p style="margin: 4px 0; font-size: 12px; color: #cbd5e1;">
+        <p style="margin: 4px 0; font-size: 12px; color: #404040;">
           <strong>Type:</strong> Verified ULAB<br>
           <strong>Lat/Lng:</strong> ${Utils.formatLatLng(site.lat, site.lng)}<br>
           <strong>Status:</strong> <span style="color: #22c55e;">Confirmed</span>
@@ -360,17 +360,17 @@ function showSitePanel(site, type) {
 
       <div class="panel-section">
         <div class="panel-section-title">Location</div>
-        <p style="margin: 0; font-size: 14px; color: #cbd5e1;">
+        <p style="margin: 0; font-size: 14px; color: #404040;">
           ${Utils.formatLatLng(site.lat, site.lng)}
         </p>
-        <p style="margin: 8px 0 0 0; font-size: 13px; color: #94a3b8;">
+        <p style="margin: 8px 0 0 0; font-size: 13px; color: #707070;">
           Detected: ${Utils.formatDate(site.dateDetected)}
         </p>
       </div>
 
       <div class="panel-section">
         <div class="panel-section-title">Why Flagged</div>
-        <p style="margin: 0; font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+        <p style="margin: 0; font-size: 13px; color: #404040; line-height: 1.6;">
           ${site.flaggedBecause}
         </p>
       </div>
@@ -380,8 +380,8 @@ function showSitePanel(site, type) {
         ${features.map((f, i) => `
           <div class="feature-bar">
             <div class="feature-name">
-              <span style="color: #cbd5e1; font-size: 12px;">${f.name}</span>
-              <span style="color: #94a3b8; font-size: 12px;">${(f.importance * 100).toFixed(0)}%</span>
+              <span style="color: #404040; font-size: 12px;">${f.name}</span>
+              <span style="color: #707070; font-size: 12px;">${(f.importance * 100).toFixed(0)}%</span>
             </div>
             <div class="feature-bar-bg">
               <div class="feature-bar-fill" style="width: ${f.importance * 100}%"></div>
@@ -392,14 +392,14 @@ function showSitePanel(site, type) {
 
       <div class="panel-section">
         <div class="panel-section-title">Nearby Context</div>
-        <p style="margin: 0 0 8px 0; font-size: 13px; color: #cbd5e1;">
+        <p style="margin: 0 0 8px 0; font-size: 13px; color: #404040;">
           <strong>Nearest verified site:</strong> ${nearestVerified ? minDistance.toFixed(1) + ' km away (' + nearestVerified.name + ')' : 'No verified sites within search radius'}
         </p>
       </div>
 
       <div class="panel-section">
         <div class="panel-section-title">Recommended Action</div>
-        <p style="margin: 0; font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+        <p style="margin: 0; font-size: 13px; color: #404040; line-height: 1.6;">
           ${site.riskScore > 0.85 ? 'High priority for field verification. Schedule visit within 2 weeks.' : site.riskScore > 0.7 ? 'Schedule field visit for further investigation.' : 'Monitor for changes; consider future verification.'}
         </p>
       </div>
@@ -482,8 +482,8 @@ function updateSiteTypeChart(data) {
       labels: ['ULAB', 'Smelter', 'Verified'],
       datasets: [{
         data: [data.ulab, data.smelter, data.verified],
-        backgroundColor: ['#9333ea', '#f97316', '#22c55e'],
-        borderColor: '#1e293b',
+        backgroundColor: ['#7c3aed', '#f97316', '#18a558'],
+        borderColor: '#ffffff',
         borderWidth: 2
       }]
     },
@@ -493,7 +493,7 @@ function updateSiteTypeChart(data) {
       plugins: {
         legend: {
           labels: {
-            color: '#cbd5e1',
+            color: '#404040',
             font: { size: 11 }
           }
         }
@@ -516,8 +516,8 @@ function updateRiskDistributionChart(data) {
       datasets: [{
         label: 'Sites',
         data: [data['0.5-0.6'], data['0.6-0.7'], data['0.7-0.8'], data['0.8-0.9'], data['0.9-1.0']],
-        backgroundColor: '#14b8a6',
-        borderColor: '#0d9488',
+        backgroundColor: '#18a558',
+        borderColor: '#149b5a',
         borderWidth: 1
       }]
     },
@@ -530,11 +530,11 @@ function updateRiskDistributionChart(data) {
       },
       scales: {
         x: {
-          ticks: { color: '#94a3b8' },
-          grid: { color: '#334155' }
+          ticks: { color: '#707070' },
+          grid: { color: '#e5e5e5' }
         },
         y: {
-          ticks: { color: '#94a3b8' },
+          ticks: { color: '#707070' },
           grid: { display: false }
         }
       }
@@ -583,11 +583,11 @@ function exportReport() {
   const stats = generateAnalyticsData(DETECTED_ULAB_SITES, DETECTED_SMELTER_SITES, currentFilter.timeLimit);
 
   Modal.open('Export Report', `
-    <div style="color: #cbd5e1;">
+    <div style="color: #404040;">
       <h4 style="margin-top: 0;">Toxic Sites Screening Report</h4>
       <p>Region: <strong>${currentFilter.region}</strong></p>
       <p>Report Date: <strong>${Utils.formatDate(new Date())}</strong></p>
-      <hr style="border-color: #334155; margin: 16px 0;">
+      <hr style="border-color: #e5e5e5; margin: 16px 0;">
 
       <h4>Summary Statistics</h4>
       <ul style="list-style: none; padding: 0;">
@@ -603,7 +603,7 @@ function exportReport() {
         <li style="margin: 8px 0;"><strong>Smelter Sites:</strong> ${stats.siteTypes.smelter}</li>
       </ul>
 
-      <p style="margin-top: 16px; font-size: 12px; color: #94a3b8;">
+      <p style="margin-top: 16px; font-size: 12px; color: #707070;">
         This report includes sites filtered by: Risk threshold >= ${currentFilter.riskThreshold.toFixed(2)}
       </p>
     </div>

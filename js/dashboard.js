@@ -1,5 +1,5 @@
 /* ============================================================================
-   Pure Earth Toxic Sites Identification Program
+   Lead Detection Tool
    Dashboard Interactivity
    ========================================================================== */
 

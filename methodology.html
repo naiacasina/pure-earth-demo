@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Methodology - Toxic Sites Identification Program</title>
+  <title>Methodology - Lead Detection Tool</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,7 +28,7 @@
     <section class="section section-dark">
       <h1 style="text-align: center; margin-bottom: var(--spacing-6);">Technical Methodology</h1>
       <p style="text-align: center; font-size: var(--font-size-lg); color: var(--gray-300); max-width: 800px; margin: 0 auto;">
-        The Toxic Sites Identification Program combines two complementary machine learning models to detect informal lead contamination sources across South Asia.
+        The Lead Detection Tool combines two complementary machine learning models to detect informal lead contamination sources across South Asia.
       </p>
     </section>
 
@@ -119,7 +119,7 @@
 
       <h3>Proof-of-Concept Results (NCR Delhi)</h3>
       <p>
-        The model was trained and evaluated in NCR Delhi using 13 verified ULAB sites from Pure Earth's TSIP database as positive labels. Key observations:
+        The model was trained and evaluated in NCR Delhi using 13 verified ULAB sites from field-verified databases as positive labels. Key observations:
       </p>
       <ul style="color: var(--gray-300);">
         <li>All 13 verified ULAB sites fall within or near the model's high-probability zones</li>
@@ -197,7 +197,7 @@
       <ul style="color: var(--gray-300);">
         <li>Geolocated smelter records from USGS industrial facility databases</li>
         <li>ILZSG (International Lead and Zinc Study Group) smelter registries</li>
-        <li>Pure Earth TSIP field-verified sites in target regions</li>
+        <li>Field-verified toxic sites in target regions</li>
         <li>Sentinel-2 imagery archive covering South Asia</li>
         <li>Negative samples: non-smelter industrial facilities and urban areas for model discrimination</li>
       </ul>
@@ -207,7 +207,7 @@
         The satellite model is currently in development. Formal performance metrics (precision, recall, F1, AUC-ROC) will be reported after sufficient field verification of model predictions has been completed. Initial qualitative assessments are encouraging, with the model correctly identifying known smelter locations in validation regions.
       </p>
       <p style="color: var(--gray-400); font-size: var(--font-size-sm);">
-        Rigorous quantitative evaluation requires a large enough set of field-verified positive and negative predictions, which is an ongoing effort coordinated with Pure Earth field teams.
+        Rigorous quantitative evaluation requires a large enough set of field-verified positive and negative predictions, which is an ongoing effort coordinated with field validation partners.
       </p>
     </section>
 
@@ -216,7 +216,7 @@
       <h2>Active Learning Loop (Planned)</h2>
 
       <p>
-        A core design goal of the TSIP screening tool is to support a feedback loop between model predictions and field verification. As field teams visit predicted sites and report findings, this data can be incorporated to improve future model performance. The envisioned process is outlined below.
+        A core design goal of the screening tool is to support a feedback loop between model predictions and field verification. As field teams visit predicted sites and report findings, this data can be incorporated to improve future model performance. The envisioned process is outlined below.
       </p>
 
       <div class="pipeline-diagram">
@@ -233,7 +233,7 @@
       <ol style="color: var(--gray-300); padding-left: 20px;">
         <li><strong>Prediction:</strong> Models generate risk scores for grid cells or image patches based on current data</li>
         <li><strong>Prioritization:</strong> High-confidence detections are sorted by risk score and clustered geographically for field team planning</li>
-        <li><strong>Field Verification:</strong> Pure Earth and partner teams visit high-priority sites and collect structured field data</li>
+        <li><strong>Field Verification:</strong> Partner field teams visit high-priority sites and collect structured field data</li>
         <li><strong>Data Integration:</strong> Field observations (site type, activity level, environmental conditions) are recorded</li>
         <li><strong>Model Evaluation:</strong> Predictions are compared against field results to identify false positives and false negatives</li>
         <li><strong>Retraining:</strong> Models are retrained on accumulated ground truth data as the labeled dataset grows</li>
@@ -286,14 +286,14 @@
 
       <h3>Validation Data</h3>
       <ul style="color: var(--gray-300);">
-        <li><strong>Pure Earth TSIP:</strong> Field-verified toxic sites from the TSIP database (13 confirmed ULAB sites used in NCR Delhi proof of concept)</li>
+        <li><strong>Field-verified sites:</strong> Toxic sites confirmed through on-the-ground assessment (13 confirmed ULAB sites used in NCR Delhi proof of concept)</li>
         <li><strong>ILZSG:</strong> International Lead and Zinc Study Group smelter registry</li>
         <li><strong>USGS:</strong> Industrial facility records with geolocated smelter data</li>
         <li><strong>Academic literature:</strong> Published studies on lead contamination sources and health impacts</li>
       </ul>
 
       <p style="margin-top: var(--spacing-8); padding: var(--spacing-6); background-color: rgba(13, 148, 136, 0.1); border-left: 4px solid #14b8a6; border-radius: var(--radius-md);">
-        <strong>Data Citation:</strong> Users of this model are encouraged to cite the underlying data sources and acknowledge the Pure Earth TSIP program. Raw output predictions should not be used as the sole basis for remediation decisions without field verification.
+        <strong>Data Citation:</strong> Users of this model are encouraged to cite the underlying data sources. Raw output predictions should not be used as the sole basis for remediation decisions without field verification.
       </p>
     </section>
 
@@ -307,9 +307,8 @@
           <li><strong>Chen & Guestrin (2016).</strong> "XGBoost: A Scalable Tree Boosting System." Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining.</li>
           <li><strong>He, Zhang, Ren & Sun (2016).</strong> "Deep Residual Learning for Image Recognition." IEEE Conference on Computer Vision and Pattern Recognition (CVPR).</li>
           <li><strong>Landrigan et al. (2018).</strong> "The Lancet Commission on pollution and health." The Lancet, 391(10119), 462–512.</li>
-          <li><strong>UNICEF & Pure Earth (2020).</strong> "The Toxic Truth: Children's Exposure to Lead Pollution Undermines a Generation of Future Potential."</li>
+          <li><strong>UNICEF (2020).</strong> "The Toxic Truth: Children's Exposure to Lead Pollution Undermines a Generation of Future Potential."</li>
           <li><strong>Ericson et al. (2021).</strong> "A meta-analysis of blood lead levels in India and the attributable burden of disease." Environment International, 147, 106308.</li>
-          <li><strong>Pure Earth.</strong> Toxic Sites Identification Program (TSIP). <a href="https://www.pureearth.org/" style="color: #14b8a6;">www.pureearth.org</a></li>
         </ul>
       </div>
     </section>
@@ -320,11 +319,11 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>About Pure Earth</h3>
+          <h3>Project</h3>
           <ul>
-            <li><a href="#">Official Website</a></li>
-            <li><a href="#">TSIP Program</a></li>
-            <li><a href="#">Publications</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="methodology.html">Methodology</a></li>
+            <li><a href="field-guide.html">Field Guide</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -353,8 +352,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Pure Earth. Toxic Sites Identification Program. All rights reserved.</p>
-        <p>Built with support from Better Planet Lab, University of Colorado Boulder.</p>
+        <p>&copy; 2026 Better Planet Lab, University of Colorado Boulder. Lead Detection Tool.</p>
       </div>
     </div>
   </footer>

@@ -1,5 +1,5 @@
 /* ============================================================================
-   Pure Earth Toxic Sites Identification Program
+   Lead Detection Tool
    Global Styles & Design System
    ========================================================================== */
 
@@ -1118,13 +1118,13 @@ a:hover {
 }
 
 .code-block {
-  background-color: var(--navy-900);
-  border: 1px solid var(--navy-700);
+  background-color: #1a1a2e;
+  border: 1px solid #2a2a4a;
   border-radius: var(--radius-md);
   padding: var(--spacing-4);
   font-family: 'Courier New', monospace;
   font-size: var(--font-size-sm);
-  color: var(--teal-400);
+  color: #5eead4;
   overflow-x: auto;
   margin: var(--spacing-4) 0;
 }

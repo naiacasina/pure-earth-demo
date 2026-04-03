@@ -1,5 +1,5 @@
 /* ============================================================================
-   Pure Earth Toxic Sites Identification Program
+   Lead Detection Tool
    Map Data & Model Output
    ========================================================================== */
 
@@ -195,11 +195,11 @@ const HEATMAP_DATA = [
   [28.4855, 77.4325, 0.948]
 ];
 
-// Verified ULAB sites from Pure Earth's TSIP database
+// Verified ULAB sites from field-verified database
 const VERIFIED_ULAB_SITES = [
-  { id: 'ULAB-001', name: 'Manual_Pt_1', lat: 28.7052, lng: 76.9228 },
+  { id: 'ULAB-001', name: 'Manual_Pt_1', lat: 28.7380, lng: 76.8100 },
   { id: 'ULAB-002', name: 'Manual_Pt_2', lat: 28.7403, lng: 77.1300 },
-  { id: 'ULAB-003', name: 'Manual_Pt_3', lat: 28.6420, lng: 77.2053 },
+  { id: 'ULAB-003', name: 'Manual_Pt_3', lat: 28.6500, lng: 77.1700 },
   { id: 'ULAB-004', name: 'Manual_Pt_4', lat: 28.6760, lng: 77.0985 },
   { id: 'ULAB-005', name: 'Manual_Pt_5', lat: 28.6729, lng: 77.1458 },
   { id: 'ULAB-006', name: 'Manual_Pt_6', lat: 28.7016, lng: 77.1322 },
@@ -279,8 +279,8 @@ const DETECTED_ULAB_SITES = [
   },
   {
     id: 'DETECT-ULAB-008',
-    lat: 28.5800,
-    lng: 77.2100,
+    lat: 28.5980,
+    lng: 77.1930,
     riskScore: 0.93,
     status: 'Under Review',
     dateDetected: '2026-02-22',
@@ -288,8 +288,8 @@ const DETECTED_ULAB_SITES = [
   },
   {
     id: 'DETECT-ULAB-009',
-    lat: 28.7600,
-    lng: 77.2650,
+    lat: 28.7830,
+    lng: 77.2480,
     riskScore: 0.86,
     status: 'Pending Verification',
     dateDetected: '2026-02-25',
@@ -306,8 +306,8 @@ const DETECTED_ULAB_SITES = [
   },
   {
     id: 'DETECT-ULAB-011',
-    lat: 28.7100,
-    lng: 77.3200,
+    lat: 28.6730,
+    lng: 77.3150,
     riskScore: 0.84,
     status: 'Pending Verification',
     dateDetected: '2026-03-05',
@@ -333,8 +333,8 @@ const DETECTED_ULAB_SITES = [
   },
   {
     id: 'DETECT-ULAB-014',
-    lat: 28.7300,
-    lng: 77.4500,
+    lat: 28.7520,
+    lng: 77.4950,
     riskScore: 0.87,
     status: 'Pending Verification',
     dateDetected: '2026-03-12',
@@ -360,8 +360,8 @@ const DETECTED_ULAB_SITES = [
   },
   {
     id: 'DETECT-ULAB-017',
-    lat: 28.7700,
-    lng: 77.3800,
+    lat: 28.7580,
+    lng: 77.3250,
     riskScore: 0.89,
     status: 'Pending Verification',
     dateDetected: '2026-03-20',

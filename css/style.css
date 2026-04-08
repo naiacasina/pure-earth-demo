@@ -9,9 +9,9 @@
   --navy-800: #f7f7f7;        /* section/card bg: light gray */
   --navy-700: #e5e5e5;        /* borders: soft gray */
   --navy-600: #d4d4d4;        /* subtle borders */
-  --teal-600: #149b5a;        /* accent dark */
-  --teal-500: #18a558;        /* BPL green accent */
-  --teal-400: #1db864;        /* accent hover */
+  --teal-600: #1d4ed8;        /* accent dark (steel blue) */
+  --teal-500: #2563eb;        /* primary blue accent */
+  --teal-400: #3b82f6;        /* accent hover */
   --orange-500: #f97316;
   --orange-400: #fb923c;
   --white: #ffffff;
@@ -24,7 +24,7 @@
   --red-500: #ef4444;
   --red-600: #dc2626;
   --yellow-500: #eab308;
-  --green-500: #18a558;
+  --green-500: #2563eb;
   --purple-600: #7c3aed;
 
   /* Typography — BPL: Poppins headings + Roboto body */
@@ -319,8 +319,8 @@ a:hover {
 }
 
 .badge-verified {
-  background-color: rgba(24, 165, 88, 0.1);
-  color: #149b5a;
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #1d4ed8;
 }
 
 .badge-pending {
@@ -1526,7 +1526,7 @@ a:hover {
 
 .tag-purple { background: rgba(124, 58, 237, 0.1); color: #7c3aed; }
 .tag-orange { background: rgba(249, 115, 22, 0.1); color: #ea580c; }
-.tag-green { background: rgba(24, 165, 88, 0.1); color: #149b5a; }
+.tag-green { background: rgba(37, 99, 235, 0.1); color: #1d4ed8; }
 
 .pipeline-card h3 {
   font-size: var(--font-size-xl);

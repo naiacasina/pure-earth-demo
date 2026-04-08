@@ -7,7 +7,7 @@
 Chart.defaults.color = '#707070';
 Chart.defaults.font.family = "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 Chart.defaults.borderColor = '#e5e5e5';
-Chart.defaults.backgroundColor = 'rgba(24, 165, 88, 0.08)';
+Chart.defaults.backgroundColor = 'rgba(37, 99, 235, 0.08)';
 
 // Custom chart theme — light
 const chartDefaults = {
@@ -33,8 +33,8 @@ const chartDefaults = {
       callbacks: {
         labelColor: function (context) {
           return {
-            borderColor: context.dataset.borderColor || '#18a558',
-            backgroundColor: context.dataset.backgroundColor || 'rgba(24, 165, 88, 0.8)'
+            borderColor: context.dataset.borderColor || '#2563eb',
+            backgroundColor: context.dataset.backgroundColor || 'rgba(37, 99, 235, 0.8)'
           };
         }
       }
@@ -65,7 +65,7 @@ function createSiteTypeChart(containerId, data) {
       labels: ['ULAB Recycling', 'Industrial Smelters', 'Verified Sites'],
       datasets: [{
         data: [data.ulab, data.smelter, data.verified],
-        backgroundColor: ['#7c3aed', '#f97316', '#18a558'],
+        backgroundColor: ['#7c3aed', '#f97316', '#2563eb'],
         borderColor: '#ffffff',
         borderWidth: 2,
         hoverOffset: 8
@@ -156,12 +156,12 @@ function createTimelineChart(containerId, timelineData) {
       datasets: [{
         label: 'Cumulative Detections',
         data: data,
-        borderColor: '#18a558',
-        backgroundColor: 'rgba(24, 165, 88, 0.08)',
+        borderColor: '#2563eb',
+        backgroundColor: 'rgba(37, 99, 235, 0.08)',
         fill: true,
         tension: 0.4,
-        pointBackgroundColor: '#18a558',
-        pointBorderColor: '#149b5a',
+        pointBackgroundColor: '#2563eb',
+        pointBorderColor: '#1d4ed8',
         pointRadius: 3,
         pointHoverRadius: 5,
         pointBorderWidth: 2
@@ -221,7 +221,7 @@ function createFeatureImportanceChart(containerId, features) {
         label: 'Importance Score',
         data: sortedFeatures.map(f => f.importance),
         backgroundColor: 'rgba(13, 148, 136, 0.8)',
-        borderColor: '#149b5a',
+        borderColor: '#1d4ed8',
         borderWidth: 1,
         borderRadius: 4
       }]

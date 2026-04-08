@@ -99,7 +99,7 @@ function updateHeatmapLayer() {
     minOpacity: 0.3,
     gradient: {
       0.0: '#d4f5e0',
-      0.2: '#18a558',
+      0.2: '#2563eb',
       0.5: '#eab308',
       0.8: '#f97316',
       1.0: '#ef4444'
@@ -482,7 +482,7 @@ function updateSiteTypeChart(data) {
       labels: ['ULAB', 'Smelter', 'Verified'],
       datasets: [{
         data: [data.ulab, data.smelter, data.verified],
-        backgroundColor: ['#7c3aed', '#f97316', '#18a558'],
+        backgroundColor: ['#7c3aed', '#f97316', '#2563eb'],
         borderColor: '#ffffff',
         borderWidth: 2
       }]
@@ -516,8 +516,8 @@ function updateRiskDistributionChart(data) {
       datasets: [{
         label: 'Sites',
         data: [data['0.5-0.6'], data['0.6-0.7'], data['0.7-0.8'], data['0.8-0.9'], data['0.9-1.0']],
-        backgroundColor: '#18a558',
-        borderColor: '#149b5a',
+        backgroundColor: '#2563eb',
+        borderColor: '#1d4ed8',
         borderWidth: 1
       }]
     },
